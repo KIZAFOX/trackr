@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trackr — Overlay League of Legends</title>
-<meta name="description" content="Trackr affiche rang, maîtrise et winrate en champ select, puis ton bilan LP en fin de partie. Gratuit, pour Windows.">
+<meta name="description" content="Trackr affiche rang, maîtrise et winrate en champ select, les meilleurs builds et runes par champion, puis ton bilan LP en fin de partie. Gratuit, pour Windows.">
 <link rel="icon" href="logo.png">
 <meta name="theme-color" content="#040a1c">
 <meta property="og:image" content="logo.png">
@@ -85,6 +85,28 @@ footer{border-top:1px solid var(--border);padding:32px 0;color:var(--muted);font
 .footer-name:hover{transform:translateY(-1px) scale(1.02);color:#6fa8ff;text-shadow:0 0 14px rgba(26,109,255,.6)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
+
+.bm-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.bm-tabs span{font:600 12px var(--font-display);padding:5px 12px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.bm-tabs span.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.bm-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.03);margin-bottom:6px;font-size:13px;color:var(--muted)}
+.bm-row.best{background:rgba(26,109,255,.16)}
+.bm-row b{color:var(--text)}
+.bm-title{font:700 11px var(--font-display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.bm-title:first-of-type{margin-top:0}
+.bm-ico{display:inline-flex;gap:4px;align-items:center}
+.bm-ico i{width:26px;height:26px;border-radius:6px;background:var(--surface-2);border:1px solid var(--border);display:inline-block}
+.bm-ico em{font-style:normal;color:var(--border);padding:0 1px}
+.bm-grid{display:grid;grid-template-columns:22px repeat(18,1fr);gap:2px;margin-top:8px}
+.bm-grid span{height:16px;border-radius:3px;background:var(--surface-2);font:600 9px/16px var(--font-display);text-align:center;color:#fff}
+.bm-grid span.on{background:var(--accent)}
+.bm-grid span.l{background:none;color:var(--muted);text-align:left;font-size:11px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:16px;max-width:640px}
+.steps li{counter-increment:s;position:relative;padding-left:52px;color:var(--muted)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:var(--surface-2);border:2px solid var(--accent);display:grid;place-items:center;font:700 16px var(--font-display);color:#6fa8ff}
+.steps b{color:var(--text)}
+.note{margin-top:28px;max-width:640px;font-size:15px;color:var(--muted);border-left:2px solid var(--accent);padding-left:16px}
+
 @media(max-width:860px){
   .hero,.split,.grid{grid-template-columns:1fr}
   .split.rev .text{order:0}
@@ -106,6 +128,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <ul>
       <li><a href="#champ-select">Champ select</a></li>
       <li><a href="#fin-de-partie">Fin de partie</a></li>
+      <li><a href="#builds">Builds</a></li>
+      <li><a href="#installation">Installation</a></li>
       <li><a href="#telecharger">Télécharger</a></li>
     </ul>
   </nav>
@@ -173,6 +197,56 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </svg>
       <div class="stats"><div>5V · 2D<span>Session</span></div><div>71%<span>Winrate</span></div><div>+43 LP<span>Total</span></div></div>
     </div>
+  </div>
+</section>
+
+<section id="builds">
+  <div class="wrap split rev">
+    <div class="text">
+      <h2>Le build qui gagne, un clic suffit.</h2>
+      <p>L'onglet Builds te montre, pour chaque champion et chaque rôle, les choix les plus joués en haut elo, calculés à partir de milliers de parties classées.</p>
+      <ul>
+        <li>Objets de départ, ordre de build et bottes avec taux de victoire</li>
+        <li>Runes, sorts d'invocateur et ordre des compétences niveau par niveau</li>
+        <li>Import des runes et création du set d'objets directement dans le client</li>
+        <li>Option : import automatique des runes dès que ton champion est verrouillé</li>
+      </ul>
+    </div>
+    <div class="panel" aria-label="Exemple de page de build (données d'illustration)">
+      <div class="bm-tabs"><span class="on">Mid</span><span>Top</span><span>ADC</span></div>
+      <div class="bm-title">Ordre de build</div>
+      <div class="bm-row best"><span class="bm-ico"><i></i><em>›</em><i></i><em>›</em><i></i></span><span><b>56 %</b> V · 24 %</span></div>
+      <div class="bm-title">Runes</div>
+      <div class="bm-row best"><span class="bm-ico"><i></i><b>Électrocution</b></span><span><b>54 %</b> V · 61 %</span></div>
+      <div class="bm-title">Compétences</div>
+      <div class="bm-grid"><span class="l">Q</span><span class="on">1</span><span class=""></span><span class=""></span><span class="on">4</span><span class="on">5</span><span class=""></span><span class="on">7</span><span class=""></span><span class="on">9</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="l">W</span><span class=""></span><span class="on">2</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">8</span><span class=""></span><span class="on">10</span><span class=""></span><span class="on">12</span><span class="on">13</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="l">E</span><span class=""></span><span class=""></span><span class="on">3</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">14</span><span class="on">15</span><span class=""></span><span class="on">17</span><span class="on">18</span><span class="l">R</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">6</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">11</span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class="on">16</span><span class=""></span><span class=""></span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Et tout ce qui te fait gagner du temps.</h2>
+    <p class="lead">Des réglages à cocher une fois, puis Trackr s'en occupe.</p>
+    <div class="grid">
+      <div class="panel"><h3>Acceptation automatique</h3><p>La partie est trouvée : Trackr accepte pour toi, sauf si tu as déjà répondu à la main.</p></div>
+      <div class="panel"><h3>Discord Rich Presence</h3><p>Ton statut Discord affiche la file, la sélection des champions et la partie, avec ton champion.</p></div>
+      <div class="panel"><h3>Overlay et clips</h3><p>Timers d'objectifs, écart de gold en jeu, et capture de tes meilleurs moments.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="installation">
+  <div class="wrap">
+    <h2>Installer Trackr en 4 étapes.</h2>
+    <p class="lead">Aucun compte, aucune configuration technique.</p>
+    <ol class="steps">
+      <li><b>Télécharge l'installateur</b> <code>Trackr-Setup-x.y.z.exe</code> depuis la <a href="https://github.com/KIZAFOX/trackr-release/releases/latest" target="_blank" rel="noreferrer">dernière release</a>.</li>
+      <li><b>Lance-le</b>, choisis le dossier d'installation et le style de « Partie en cours » (Duel, Cartes ou Tableau), puis clique sur Installer.</li>
+      <li><b>Ouvre Trackr</b> depuis le menu Démarrer et laisse le client League of Legends ouvert : le compte et les phases de jeu sont détectés automatiquement.</li>
+      <li><b>Active les options</b> qui t'intéressent dans les réglages : import automatique des runes, acceptation automatique, Discord.</li>
+    </ol>
+    <p class="note">Windows peut afficher un avertissement au premier lancement : télécharge toujours Trackr depuis la page de release officielle. Les mises à jour se font ensuite depuis l'application, avec le bouton « Mettre à jour Trackr ». Un souci ? Les journaux sont dans <code>%APPDATA%\Trackr\logs</code>.</p>
   </div>
 </section>
 
