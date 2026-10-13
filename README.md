@@ -16,8 +16,8 @@ bilan de fin de partie, builds high-elo, clips et bien plus, au même endroit.
 
 [**Télécharger**](https://github.com/KIZAFOX/trackr-release/releases/latest) ·
 [Site officiel](https://kizafox.github.io/trackr-website/) ·
-[Guide d'installation](docs/INSTALLATION.md) ·
-[Roadmap](docs/TODO.md)
+[Guide d'installation](INSTALLATION.md) ·
+[Roadmap](TODO.md)
 
 </div>
 
