@@ -9,7 +9,7 @@
 Overlay et dashboard pour League of Legends : sélection des champions, stats en partie,
 bilan de fin de partie, builds high-elo, clips et bien plus, au même endroit.
 
-![Version](https://img.shields.io/badge/version-0.2.0-blueviolet)
+![Version](https://img.shields.io/badge/version-0.2.1-blueviolet)
 ![Plateforme](https://img.shields.io/badge/plateforme-Windows-0078D6)
 ![Electron](https://img.shields.io/badge/Electron-44-47848F)
 ![Licence](https://img.shields.io/badge/licence-propriétaire-lightgrey)

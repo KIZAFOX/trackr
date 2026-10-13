@@ -1,6 +1,6 @@
 # Trackr — TODO
 
-Version actuelle : **0.2.0** (en préparation, dernière publiée : 0.1.9). Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
+Version actuelle : **0.2.1**. Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
 
 ## À vérifier en priorité
 
