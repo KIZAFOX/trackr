@@ -1,21 +1,21 @@
 # Trackr — TODO
 
-Version actuelle : **0.2.1**. Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
+Version actuelle : **0.2.1** (la 0.2.2 est prête : `package.json` et `CHANGELOG.md` à jour, reste à publier). Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
 
 ## À vérifier en priorité
 
-- [ ] Publier la prochaine release (stats d'usage, comptes, carte d'import au champ select, icônes de clips) :
-  corriger l'erreur 422 « valid tag » de la 0.1.9 si elle revient, puis tester une **vraie mise à jour**. *Moyenne*
-- [ ] Overlay invisible quand League est en **plein écran exclusif** (visible en sans bordure) : impossible à
-  contourner sans injection (interdit). Avertissement ajouté ; reste à valider en réel, puis étudier un
-  second écran ou l'overlay dans la fenêtre Trackr. *Moyenne*
-- [ ] Écrans multiples, résolutions variables et changements de fenêtre pendant une session. *Moyenne*
+- [ ] **Publier la 0.2.2** : `npm test`, `npm run release`, publier le brouillon GitHub, puis tester une **vraie mise à jour
+  en un clic** depuis la 0.2.1 (le bouton doit télécharger, fermer Trackr, installer et relancer). *Faible*
+- [ ] Overlay en **plein écran exclusif** : toujours invisible sur l'écran du jeu (injection interdite). Contournement ajouté :
+  Trackr s'ouvre sur un second écran au lancement de la partie (Réglages → Partie en cours → Écran). À valider en réel
+  avec deux écrans. *Moyenne*
+- [ ] Écrans multiples, résolutions variables et changements de fenêtre pendant une session (l'overlay couvre la zone de
+  travail de l'écran principal, sans la barre des tâches). *Moyenne*
 
 ## Priorité haute
 
 - [ ] Stats d'usage : au-delà de ~200 utilisateurs actifs par jour, la limite d'écriture du plan gratuit KV est
   atteinte (passer à un ping par jour ou au plan payant) ; ajouter une protection contre les faux pings. *Faible*
-- [ ] Tableau de bord : axe de la courbe lisible avec peu d'utilisateurs, courbe « Actifs » visible sous « Nouveaux ». *Faible*
 - [ ] **Rapport de fin de partie actionnable** : comparer ton build et tes runes au build le plus joué
   du champion. *Moyenne*
 - [ ] Diagnostics de dépannage Riot / LCU / fichiers manquants : messages explicites, retry ciblés. *Moyenne*
@@ -36,21 +36,44 @@ Version actuelle : **0.2.1**. Priorité = valeur produit et fiabilité. Difficul
 - [ ] Suivi manuel des sorts d'invocateur ennemis avec compte à rebours. *Moyenne*
 - [ ] Raccourcis clavier globaux (afficher/masquer l'overlay, démarrer un clip). *Moyenne*
 - [ ] Notifications Windows : partie trouvée, build mis à jour, nouvelle version. *Faible*
-- [ ] Rich Presence : rang en option, état « en file » avec le mode, bouton de rejoindre. *Faible*
+- [ ] Rich Presence : bouton « rejoindre » (pas fait : il faut relayer une invitation de lobby via le client League, jugé trop fragile). *Faible*
 - [ ] Profils d'overlay distincts selon le mode de jeu. *Élevée*
 - [ ] Partage de clips vers Discord et conversion MP4 optionnelle. *Élevée*
 - [ ] Capture audio et choix de l'écran pour les clips et l'overlay. *Élevée*
 - [ ] Support d'autres régions dans l'app (profil, benchmarks, builds). *Moyenne*
-- [x] Traduction de l'interface (anglais), sélecteur Langue / Language dans Réglages → Application
+- [x] Traduction de l'interface (anglais), sélecteur Langue / Language dans Réglages → Application, changement à chaud
 
 ## Priorité basse
 
-- [ ] Étendre les tests d'interface aux autres onglets (live, historique, clips). *Moyenne*
 - [ ] Certificat de signature reconnu pour supprimer l'avertissement Windows SmartScreen. *Faible*
 
 ## Terminé
 
 ### Application
+- [x] Logo de la barre des tâches : problème côté Windows (cache d'icônes), réglé, rien à changer dans le code.
+- [x] **Mise à jour en un clic** : le bouton cherche, télécharge, ferme Trackr, installe et relance sans second clic
+  (annulé en cas d'erreur, ignoré en développement). À valider en réel.
+- [x] **Trackr sur un second écran en partie** : choix de l'écran dans Réglages → Partie en cours, Trackr s'ouvre dessus
+  au lancement de la partie sans prendre le focus. À valider avec deux écrans.
+- [x] `build-automation/` : la collecte ne tourne plus dans le vide quand il n'y a plus de nouvelles parties (test passé de
+  60 s à quelques ms, plus aucun appel Riot inutile en production).
+- [x] Dépendances : jsdom ajouté en devDependency, `npm audit --omit=dev` sans vulnérabilité.
+- [x] Worker de télémétrie déployé (`npx wrangler deploy`) et nouveau tableau de bord vérifié (5 onglets, Workflows).
+- [x] Après le refactor : app parcourue en réel (accueil, clips, builds, fin de partie, overlay, réglages), sans régression.
+- [x] Secrets du `.env` partagé changés (Riot, GitHub, jeton admin du Worker).
+- [x] **Rich Presence** : le mode de jeu s'affiche en file, en sélection et en partie (ex. « En file d'attente · Classée
+  Solo/Duo »). Le rang n'est volontairement jamais affiché.
+- [x] **Tests d'interface** sur Live, Accueil/historique, Fin de partie et Clips (jsdom, 27 tests, ignorés si `npm install`
+  n'a pas été fait).
+- [x] **Aide aux compétences** : au level up, la compétence à monter brille sur la barre de sorts (ordre le plus joué du
+  champion, ultime aux niveaux 6/11/16), position réglable et testable. Validée en vraie partie.
+- [x] **Réglages réorganisés** en 7 catégories avec menu latéral (Général, Compte, Overlay en jeu, Partie en cours,
+  Automatisation, Clips, Données et infos), dernière catégorie mémorisée.
+- [x] **Tableau de bord de télémétrie refait** : 5 onglets (vue d'ensemble, utilisateurs, produit, releases, workflows),
+  rétention, engagement, cycle de vie, cohortes, santé du pipeline, thème clair/sombre.
+- [x] **Refactor complet** sans commentaires : code formaté, doublons retirés, `home.js` découpé, tests et rendu identiques.
+- [x] Historique de l'accueil : filtres par file, « Voir plus », archive locale (300 parties par compte), parties perso exclues.
+- [x] Gestion des erreurs 429 de l'API Riot (pause et limite de concurrence).
 - [x] Statistiques d'usage anonymes (désactivables) + tableau de bord privé sur Cloudflare Workers (déployé et vérifié) :
   utilisateurs actifs, versions, options, téléchargements, état des workflows.
 - [x] Icônes de champion des clips fiabilisées (joueur retrouvé par Riot ID, fiche complétée en début de partie, image de secours).
