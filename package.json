@@ -57,7 +57,6 @@
       ],
       "icon": "build/icon.ico",
       "signtoolOptions": {
-        "publisherName": "KIZAFOX",
         "sign": "tools/sign-win.js",
         "signingHashAlgorithms": [
           "sha256"
@@ -86,7 +85,7 @@
         "provider": "github",
         "owner": "KIZAFOX",
         "repo": "trackr-release",
-        "releaseType": "release"
+        "releaseType": "draft"
       }
     ]
   }
