@@ -9,14 +9,14 @@
 Overlay et dashboard pour League of Legends : sélection des champions, stats en partie,
 bilan de fin de partie, builds high-elo, clips et bien plus, au même endroit.
 
-![Version](https://img.shields.io/badge/version-0.1.9-blueviolet)
+![Version](https://img.shields.io/badge/version-0.2.0-blueviolet)
 ![Plateforme](https://img.shields.io/badge/plateforme-Windows-0078D6)
 ![Electron](https://img.shields.io/badge/Electron-44-47848F)
 ![Licence](https://img.shields.io/badge/licence-propriétaire-lightgrey)
 
 [**Télécharger**](https://github.com/KIZAFOX/trackr-release/releases/latest) ·
 [Site officiel](https://kizafox.github.io/trackr-website/) ·
-[Guide d'installation](INSTALLATION.md) ·
+[Guide d'installation](docs/INSTALLATION.md) ·
 [Roadmap](TODO.md)
 
 </div>
@@ -99,6 +99,7 @@ src/
   core/       Logique métier sans Electron, testable seule (client LCU, runes, builds, tilt...)
   shared/     Modules UMD utilisés par Node et par les pages
   renderer/   Interfaces : dashboard, overlay, splash, recorder
+telemetry-worker/  Worker Cloudflare : statistiques d'usage anonymes et tableau de bord du mainteneur
 assets/       Icône de l'application
 build/        Icône Windows et script NSIS
 tools/        Signature Windows, vérification de release
@@ -123,7 +124,14 @@ Trackr télécharge ces fichiers, les met en cache localement et continue de fon
 - [Checklist de release](docs/RELEASE_CHECKLIST.md)
 - [Clips](docs/CLIPS.md)
 - [Thèmes](docs/THEMES.md)
-- [Roadmap](docs/TODO.md)
+- [Roadmap](TODO.md)
+
+## Statistiques d'usage anonymes
+
+Trackr envoie, au plus toutes les 6 h, un ping anonyme (identifiant aléatoire, version, système, région, options
+activées) pour que le développeur sache combien de personnes l'utilisent. Jamais de pseudo, de parties, de clips ni de
+clé API. Désactivable dans **Réglages → Statistiques d'usage anonymes**. Détails et tableau de bord du mainteneur :
+[telemetry-worker/README.md](telemetry-worker/README.md).
 
 ## Respect du jeu et de Riot
 
@@ -137,6 +145,6 @@ League of Legends et Riot Games sont des marques déposées de Riot Games, Inc.*
 
 <div align="center">
 
-Fait par **@KIZA** · [kizafox.github.io/trackr-website](https://kizafox.github.io/trackr-website/)
+Fait par **KIZAFOX** · [kizafox.github.io/trackr-website](https://kizafox.github.io/trackr-website/)
 
 </div>
