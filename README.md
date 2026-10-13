@@ -137,6 +137,6 @@ League of Legends et Riot Games sont des marques déposées de Riot Games, Inc.*
 
 <div align="center">
 
-Fait par **KIZAFOX** · [kizafox.github.io/trackr-website](https://kizafox.github.io/trackr-website/)
+Fait par **@KIZA** · [kizafox.github.io/trackr-website](https://kizafox.github.io/trackr-website/)
 
 </div>
