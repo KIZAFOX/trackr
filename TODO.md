@@ -1,19 +1,33 @@
 # Trackr — TODO
 
-Version actuelle : **0.2.1** (la 0.2.2 est prête : `package.json` et `CHANGELOG.md` à jour, reste à publier). Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
+Version actuelle : **0.2.2** (publiée, sans vérification de signature bloquante). La **0.2.3** est prête à publier (nouvel accueil, raccourci d'ouverture de Trackr, stats par file et correctifs ci-dessous). Priorité = valeur produit et fiabilité. Difficulté = estimation, pas une durée garantie.
 
 ## À vérifier en priorité
 
-- [ ] **Publier la 0.2.2** : `npm test`, `npm run release`, publier le brouillon GitHub, puis tester une **vraie mise à jour
-  en un clic** depuis la 0.2.1 (le bouton doit télécharger, fermer Trackr, installer et relancer). *Faible*
+- [ ] **Publier la 0.2.3** (`npm test`, passer la version à 0.2.3, `npm run release`, publier le brouillon) puis **tester la mise
+  à jour en un clic** depuis la 0.2.2 installée à la main (télécharger, fermer, installer, relancer). *Faible*
+- [ ] Signature des mises à jour : sans `publisherName`, seule la somme de contrôle est vérifiée. Épingler l'empreinte du
+  certificat auto-signé, ou acheter un vrai certificat. *Moyenne*
 - [ ] Overlay en **plein écran exclusif** : toujours invisible sur l'écran du jeu (injection interdite). Contournement ajouté :
   Trackr s'ouvre sur un second écran au lancement de la partie (Réglages → Partie en cours → Écran). À valider en réel
   avec deux écrans. *Moyenne*
-- [ ] Écrans multiples, résolutions variables et changements de fenêtre pendant une session (l'overlay couvre la zone de
-  travail de l'écran principal, sans la barre des tâches). *Moyenne*
+- [ ] **Raccourci global pour ouvrir Trackr (Alt + N)** : affiche Trackr sur l'écran choisi (Réglages → Partie en cours), sinon sur
+  l'écran principal avec un fond sombre derrière (un clic dessus referme) ; second appui = masquer. À valider en réel :
+  pendant une partie (focus, fond sombre au-dessus du jeu en sans bordure), avec deux écrans, raccourci déjà pris. *Faible*
+- [ ] **Enregistrement « partie complète »** : écrit désormais sur le disque au fil de la partie (plantage mémoire de
+  l'enregistreur à la fin d'une partie de 30 min). À valider avec une longue partie ; récupérer les fichiers `.part`
+  laissés par un plantage au prochain démarrage. *Faible*
+- [ ] Import automatique des runes : `HTTP 400` sur `matches/by-puuid` (le puuid du client League est au format UUID).
+  Retrouver le puuid côté Riot à partir du Riot ID si ça se reproduit. *Moyenne*
 
 ## Priorité haute
 
+- [ ] Affiner la **note** des parties (repères par rôle, poids des critères) : vue en vraie partie en ARAM Mayhem, à tester
+  en Solo/Duo (rôles, KP, adversaire de lane). *Faible*
+- [ ] Éditeur de position de l'overlay : deux blocs posés au même endroit se cachent l'un l'autre (amener le bloc cliqué au
+  premier plan, ou empêcher le chevauchement). *Faible*
+- [ ] Accueil : les statistiques ne portent que sur les parties chargées (jusqu'à la limite de l'historique) ; ajouter un
+  sélecteur de période ou charger plus d'historique pour Flex. *Faible*
 - [ ] Stats d'usage : au-delà de ~200 utilisateurs actifs par jour, la limite d'écriture du plan gratuit KV est
   atteinte (passer à un ping par jour ou au plan payant) ; ajouter une protection contre les faux pings. *Faible*
 - [ ] **Rapport de fin de partie actionnable** : comparer ton build et tes runes au build le plus joué
@@ -34,12 +48,15 @@ Version actuelle : **0.2.1** (la 0.2.2 est prête : `package.json` et `CHANGELOG
 ## Priorité moyenne
 
 - [ ] Suivi manuel des sorts d'invocateur ennemis avec compte à rebours. *Moyenne*
-- [ ] Raccourcis clavier globaux (afficher/masquer l'overlay, démarrer un clip). *Moyenne*
-- [ ] Notifications Windows : partie trouvée, build mis à jour, nouvelle version. *Faible*
+- [ ] Raccourci clavier global pour démarrer un clip (le module `accelerator` et l'enregistrement de raccourcis existent déjà
+  pour celui d'ouverture de Trackr, à réutiliser). *Faible*
+- [ ] Notifications Windows : déjà faites pour l'alerte de tilt et le mode d'affichage du jeu ; reste partie trouvée, build
+  mis à jour, nouvelle version. *Faible*
 - [ ] Rich Presence : bouton « rejoindre » (pas fait : il faut relayer une invitation de lobby via le client League, jugé trop fragile). *Faible*
 - [ ] Profils d'overlay distincts selon le mode de jeu. *Élevée*
 - [ ] Partage de clips vers Discord et conversion MP4 optionnelle. *Élevée*
-- [ ] Capture audio et choix de l'écran pour les clips et l'overlay. *Élevée*
+- [ ] Capture audio (le son du jeu est capturé si disponible, pas de choix de source ni de micro) et choix de l'écran de
+  capture des clips (Trackr se place déjà sur un écran choisi au lancement de la partie ou par raccourci). *Élevée*
 - [ ] Support d'autres régions dans l'app (profil, benchmarks, builds). *Moyenne*
 - [x] Traduction de l'interface (anglais), sélecteur Langue / Language dans Réglages → Application, changement à chaud
 
@@ -50,6 +67,27 @@ Version actuelle : **0.2.1** (la 0.2.2 est prête : `package.json` et `CHANGELOG
 ## Terminé
 
 ### Application
+- [x] **Raccourci global pour ouvrir Trackr** (`Alt + N` par défaut) : module `appHotkey`, fond sombre `backdrop`, réglages (activé, touches),
+  capture de la combinaison dans Réglages → Partie en cours, erreur si le raccourci est déjà pris. Dans la 0.2.3.
+- [x] **Statistiques de l'accueil par file** : la carte de stats suit le sélecteur Solo/Duo – Flex du profil (choisi
+  automatiquement au démarrage), la liste des parties garde ses propres filtres. Dans la 0.2.3.
+- [x] **Plantage de l'enregistreur** en mode « partie complète » (mémoire saturée à la fin de la partie) : écriture sur disque
+  au fil de l'eau via `append-clip-chunk` / `finish-clip-file`, test de routes ajouté. Dans la 0.2.3.
+- [x] **Nouvel accueil** : bloc profil, statistiques à onglets (Aperçu, Champions, Rôles, Forme), cartes de parties avec note,
+  KP et adversaire de lane. Dans la 0.2.3. Vérifié en réel (compte Zelef, ARAM Mayhem) ; reste Solo/Duo à voir.
+- [x] **Trackr s'ouvre agrandi** (fenêtre maximisée) au lieu d'une petite fenêtre. Dans la 0.2.3.
+- [x] **Pseudos abîmés** (accents, caractères spéciaux : « � ») corrigés : les réponses de l'API de jeu, du client League et de
+  Riot sont décodées en UTF-8 sans couper un caractère. Dans la 0.2.3.
+- [x] **Partie en cours** : les bandeaux de champions utilisent le splash art large, plus de zoom en plein écran. Dans la 0.2.3.
+- [x] **Position de l'overlay** : les blocs réglés tout à droite ne sortent plus de la zone d'édition (replacés à l'affichage
+  du panneau et au redimensionnement). Dans la 0.2.3.
+- [x] **Rich Presence** : les modes Aram Mayhem, One For All, Nexus Blitz et Ultimate Spellbook s'affichent (« En partie ·
+  Aram Mayhem »). Dans la 0.2.3.
+- [x] Diagnostic : l'historique de l'accueil affiche sa raison quand il échoue, et les erreurs de l'interface sont recopiées
+  dans le terminal (`[renderer]`).
+- [x] **0.2.2 publiée** : tests, `npm run release` en brouillon, release publiée sur GitHub. La 0.2.1 ne peut pas se mettre à jour
+  seule (ancienne vérification de signature) : la 0.2.2 s'installe à la main une fois.
+- [x] Clips : un même compte n'apparaît plus en plusieurs groupes dans les filtres (clé puuid ou nom regroupés). Dans la 0.2.3.
 - [x] Logo de la barre des tâches : problème côté Windows (cache d'icônes), réglé, rien à changer dans le code.
 - [x] **Mise à jour en un clic** : le bouton cherche, télécharge, ferme Trackr, installe et relance sans second clic
   (annulé en cas d'erreur, ignoré en développement). À valider en réel.
