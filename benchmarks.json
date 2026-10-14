@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-14T14:30:37.290Z",
+  "source": "LoL Crawler, Ranked Solo/Duo, parties MASTER+",
+  "region": "EUW1",
+  "queueId": 420,
+  "recentDays": 45,
+  "patch": "26.20",
+  "sampledGames": 1356,
+  "platforms": [
+    "euw1"
+  ],
+  "roles": {
+    "TOP": {
+      "csm": 7.4,
+      "gpm": 421,
+      "kp": 35.8,
+      "visionPerMin": 0.8,
+      "sampleSize": 2712,
+      "matches": 1356
+    },
+    "JUNGLE": {
+      "csm": 7.3,
+      "gpm": 470,
+      "kp": 51.2,
+      "visionPerMin": 0.9,
+      "sampleSize": 2712,
+      "matches": 1356
+    },
+    "MIDDLE": {
+      "csm": 7.6,
+      "gpm": 441,
+      "kp": 44.2,
+      "visionPerMin": 0.7,
+      "sampleSize": 2712,
+      "matches": 1356
+    },
+    "BOTTOM": {
+      "csm": 8,
+      "gpm": 501,
+      "kp": 47.1,
+      "visionPerMin": 0.7,
+      "sampleSize": 2712,
+      "matches": 1356
+    },
+    "UTILITY": {
+      "csm": 1.1,
+      "gpm": 313,
+      "kp": 56.4,
+      "visionPerMin": 2.7,
+      "sampleSize": 2712,
+      "matches": 1356
+    }
+  }
+}
