@@ -9,7 +9,7 @@
 Overlay et dashboard pour League of Legends : sélection des champions, stats en partie,
 bilan de fin de partie, builds high-elo, clips et bien plus, au même endroit.
 
-![Version](https://img.shields.io/badge/version-0.2.3-blueviolet)
+![Version](https://img.shields.io/badge/version-0.2.4-blueviolet)
 ![Plateforme](https://img.shields.io/badge/plateforme-Windows-0078D6)
 ![Electron](https://img.shields.io/badge/Electron-44-47848F)
 ![Licence](https://img.shields.io/badge/licence-propriétaire-lightgrey)
@@ -109,12 +109,12 @@ docs/         Installation, release, clips, thèmes, roadmap
 
 ## Données et automatisation
 
-Deux dépôts d'automatisation (GitHub Actions) alimentent l'application, publiés sur la branche
-`gh-pages` de [`KIZAFOX/trackr-release`](https://github.com/KIZAFOX/trackr-release) :
+Le crawler de Trackr (`lol-crawler`) analyse des parties classées Solo/Duo et publie ses données sur la branche
+`crawler-data` de [`KIZAFOX/trackr-release`](https://github.com/KIZAFOX/trackr-release) :
 
-- **Builds** : collecte de parties Ranked Solo/Duo de joueurs high-elo via Match-V5, toutes les 8 h,
-  avec seuils minimaux de parties par champion et par rôle.
-- **Benchmarks** : moyennes par rôle régénérées chaque semaine.
+- **Benchmarks** (`benchmarks.json`) : moyennes par rôle et par rang, affichées dans l'overlay.
+- **Champions** (`champions.json`, `champions/<id>.json`) : stats par rôle, matchups, synergies et builds,
+  utilisés par l'onglet Builds et l'aide aux compétences.
 
 Trackr télécharge ces fichiers, les met en cache localement et continue de fonctionner hors ligne.
 
