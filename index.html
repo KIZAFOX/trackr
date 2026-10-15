@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trackr — Overlay League of Legends</title>
-<meta name="description" content="Trackr affiche rang, maîtrise et winrate en champ select, les meilleurs builds et runes par champion, puis ton bilan LP en fin de partie. Gratuit, pour Windows.">
+<title>Trackr · Overlay League of Legends</title>
+<meta name="description" content="Trackr affiche rang, maîtrise et winrate en champ select, ton tableau de bord avec une note sur 100 par partie, les builds par champion, le classement et les pros. Gratuit à 100 %, pour Windows.">
 <link rel="icon" href="logo.png">
 <meta name="theme-color" content="#040a1c">
 <meta property="og:image" content="logo.png">
@@ -77,6 +77,17 @@ h2{font:800 clamp(30px,4vw,42px)/1.1 var(--font-display);margin-bottom:14px}
 .grid .panel h3{font:700 20px var(--font-display);margin-bottom:8px}
 .grid .panel p{color:var(--muted);font-size:16px}
 
+.reel{width:100%;aspect-ratio:16/9;display:block;border-radius:14px;border:1px solid var(--border);background:#000;box-shadow:0 0 60px rgba(26,109,255,.2),0 30px 80px rgba(0,0,0,.5)}
+.shot{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--border);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.stack .text{margin-bottom:40px}
+.stack .text ul{grid-template-columns:1fr 1fr;column-gap:32px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.duo figure{margin:0}
+.duo figcaption{color:var(--muted);font-size:15px;margin-top:14px}
+.duo figcaption b{color:var(--text);font-family:var(--font-display)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.legal{flex-basis:100%;max-width:92ch;font-size:13px;line-height:1.5}
+
 .dl{text-align:center}
 .dl .lead{margin:0 auto 32px}
 .dl .cta{justify-content:center}
@@ -108,7 +119,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .note{margin-top:28px;max-width:640px;font-size:15px;color:var(--muted);border-left:2px solid var(--accent);padding-left:16px}
 
 @media(max-width:860px){
-  .hero,.split,.grid{grid-template-columns:1fr}
+  .hero,.split,.grid,.grid.two,.duo,.stack .text ul{grid-template-columns:1fr}
   .split.rev .text{order:0}
   nav ul{display:none}
   .hero{padding:40px 0 64px}
@@ -127,8 +138,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     </a>
     <ul>
       <li><a href="#champ-select">Champ select</a></li>
-      <li><a href="#fin-de-partie">Fin de partie</a></li>
+      <li><a href="#tableau-de-bord">Tableau de bord</a></li>
       <li><a href="#builds">Builds</a></li>
+      <li><a href="#classement">Classement</a></li>
       <li><a href="#installation">Installation</a></li>
       <li><a href="#telecharger">Télécharger</a></li>
     </ul>
@@ -141,7 +153,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="cta">
         <a class="btn" href="https://github.com/KIZAFOX/trackr/releases/latest">Télécharger pour Windows</a>
       </div>
-      <small>Gratuit · Mises à jour automatiques · Non affilié à Riot Games</small>
+      <small>Gratuit à 100 % · Mises à jour automatiques · Non affilié à Riot Games</small>
     </div>
 
     <div class="overlay" aria-label="Aperçu de l'overlay en champ select">
@@ -155,6 +167,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </header>
 </div>
 
+<section id="video">
+  <div class="wrap">
+    <h2>Trackr en 15 secondes.</h2>
+    <p class="lead">Le tableau de bord, les builds, le classement et les pros, filmés dans l'app.</p>
+    <video class="reel" src="showreel.mp4" poster="showreel-poster.jpg" muted loop playsinline controls preload="metadata" aria-label="Présentation de Trackr : tableau de bord, Builds, Classement et Pros"></video>
+  </div>
+</section>
+
 <section id="champ-select">
   <div class="wrap split">
     <div class="text">
@@ -164,6 +184,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <li>Rang et division de chaque joueur</li>
         <li>Niveau de maîtrise sur le champion choisi</li>
         <li>Winrate sur les parties récentes</li>
+        <li>Draft en direct : un plateau 5 contre 5 avec tes alliés et les picks adverses</li>
+        <li>Ton winrate contre chaque adversaire, dans le panneau Menaces</li>
       </ul>
     </div>
     <div class="panel">
@@ -172,6 +194,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="player"><div class="av">Ja</div><div><div class="pname">Joueur 2</div><div class="prank">Platine I · Maîtrise 4</div></div><div class="wr">50%<span>10 dernières</span></div></div>
       <div class="player"><div class="av">Ka</div><div><div class="pname">Joueur 3</div><div class="prank">Émeraude III · Maîtrise 7</div></div><div class="wr good">64%<span>10 dernières</span></div></div>
     </div>
+  </div>
+</section>
+
+<section id="tableau-de-bord">
+  <div class="wrap stack">
+    <div class="text">
+      <h2>Ta forme en un coup d'œil.</h2>
+      <p>Le tableau de bord prend la couleur de ton rang et suit 8 indicateurs sur tes 10, 20 ou 30 dernières parties, chacun avec sa courbe et l'écart avec la période précédente.</p>
+      <ul>
+        <li>Une note sur 100 et une lettre, de S+ à C, pour chaque partie</li>
+        <li>KDA, CS et or par minute, participation, dégâts, vision, morts</li>
+        <li>Le détail d'une partie : lane à 15 min, déroulé, compétences, runes</li>
+        <li>Un filtre par file pour ne garder que tes parties classées</li>
+      </ul>
+    </div>
+    <img class="shot" src="tableau-de-bord.jpg" width="1600" height="860" loading="lazy" alt="Tableau de bord de Trackr : en-tête du compte aux couleurs du rang, 8 indicateurs avec leur courbe, et les parties récentes notées sur 100.">
   </div>
 </section>
 
@@ -204,8 +242,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap split rev">
     <div class="text">
       <h2>Le build qui gagne, un clic suffit.</h2>
-      <p>L'onglet Builds te montre, pour chaque champion et chaque rôle, les choix les plus joués en haut elo, calculés à partir de milliers de parties classées.</p>
+      <p>L'onglet Builds te montre, pour chaque champion et chaque rôle, les choix les plus joués, calculés sur les parties classées Solo/Duo collectées par Trackr.</p>
       <ul>
+        <li>Winrate, taux de bannissement, matchups favorables et difficiles, meilleures synergies</li>
         <li>Objets de départ, ordre de build et bottes avec taux de victoire</li>
         <li>Runes, sorts d'invocateur et ordre des compétences niveau par niveau</li>
         <li>Import des runes et création du set d'objets directement dans le client</li>
@@ -224,14 +263,32 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
+<section id="classement">
+  <div class="wrap">
+    <h2>Le classement et les pros, sans quitter l'app.</h2>
+    <p class="lead">Regarde où en sont les meilleurs joueurs et ce que jouent les pros en SoloQ, mis à jour par Trackr.</p>
+    <div class="duo">
+      <figure>
+        <img class="shot" src="classement.jpg" width="1600" height="860" loading="lazy" alt="Page Classement : les trois premiers joueurs en Challenger, les seuils Challenger et Grand Maître, puis la liste avec LP et winrate.">
+        <figcaption><b>Classement.</b> Les meilleurs joueurs classés de ta région en Solo/Duo et en Flex, avec les seuils Challenger et Grand Maître.</figcaption>
+      </figure>
+      <figure>
+        <img class="shot" src="pros.jpg" width="1600" height="860" loading="lazy" alt="Page Pros : une carte par joueur pro avec son équipe, son rôle, ses LP et les champions joués.">
+        <figcaption><b>Pros.</b> Les joueurs pros, leurs comptes SoloQ et les champions qu'ils y jouent, filtrables par rôle.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>Et tout ce qui te fait gagner du temps.</h2>
     <p class="lead">Des réglages à cocher une fois, puis Trackr s'en occupe.</p>
-    <div class="grid">
+    <div class="grid two">
       <div class="panel"><h3>Acceptation automatique</h3><p>La partie est trouvée : Trackr accepte pour toi, sauf si tu as déjà répondu à la main.</p></div>
       <div class="panel"><h3>Discord Rich Presence</h3><p>Ton statut Discord affiche la file, la sélection des champions et la partie, avec ton champion.</p></div>
       <div class="panel"><h3>Overlay et clips</h3><p>Timers d'objectifs, écart de gold en jeu, et capture de tes meilleurs moments.</p></div>
+      <div class="panel"><h3>Aide aux compétences</h3><p>Au level up, la compétence à monter brille sur ta barre de sorts, selon l'ordre le plus joué sur ton champion.</p></div>
     </div>
   </div>
 </section>
@@ -257,7 +314,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="grid">
       <div class="panel"><h3>Installation en un clic</h3><p>Télécharge l'exe, lance-le, et Trackr se connecte au client League of Legends.</p></div>
       <div class="panel"><h3>Mises à jour automatiques</h3><p>Chaque nouvelle version se télécharge et s'installe toute seule.</p></div>
-      <div class="panel"><h3>Expérience claire</h3><p>Tu as accès à des infos utiles en un coup d'œil, sans friction ni surcharge visuelle.</p></div>
+      <div class="panel"><h3>Expérience claire</h3><p>Pensé pour un coup d'œil entre deux parties : l'essentiel en gros, le détail à un clic.</p></div>
     </div>
   </div>
 </section>
@@ -275,8 +332,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 <footer>
   <div class="wrap">
-    <span>Trackr · par <a class="footer-name" href="https://twitter.com/KIZAFOX" target="_blank" rel="noreferrer">KIZAFOX</a></span>
-    <span>Trackr n'est pas affilié à Riot Games. League of Legends est une marque de Riot Games, Inc.</span>
+    <span>Trackr · par <a class="footer-name" href="https://twitter.com/KIZAFOX" target="_blank" rel="noreferrer">KIZAFOX</a> · <a href="https://x.com/TrackrGG" target="_blank" rel="noreferrer">@TrackrGG sur X</a></span>
+    <p class="legal">Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
   </div>
 </footer>
 
@@ -321,6 +378,11 @@ addEventListener('pointermove',e=>{pointer.x=e.clientX;pointer.y=e.clientY});
 addEventListener('resize',()=>{setup();build()});
 setup();build();
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(frame);
+
+const reel=document.querySelector('.reel');
+if(reel&&'IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  new IntersectionObserver(([e])=>{if(e.isIntersecting)reel.play().catch(()=>{});else reel.pause()},{threshold:.5}).observe(reel);
+}
 </script>
 
 </body>
