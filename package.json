@@ -2,7 +2,7 @@
   "name": "trackr",
   "productName": "Trackr",
   "author": "KIZAFOX",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Trackr, c'est comme DPM.gg mais gratuit à 100 %",
   "license": "UNLICENSED",
   "private": true,
@@ -13,8 +13,8 @@
   "scripts": {
     "start": "electron .",
     "test": "node --test",
+    "previews": "electron tools/make-theme-previews.js",
     "dist": "node tools/release-notes.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --publish never",
-    "release:local": "node tools/release-notes.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --publish never",
     "release": "node -r dotenv/config tools/check-release-env.js && node tools/release-notes.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --publish always"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
     ],
     "files": [
       "package.json",
+      "CHANGELOG.md",
       "assets/**/*",
       "src/**/*",
       "!**/*.map"
@@ -84,7 +85,7 @@
       {
         "provider": "github",
         "owner": "KIZAFOX",
-        "repo": "trackr-release",
+        "repo": "trackr",
         "releaseType": "draft"
       }
     ]

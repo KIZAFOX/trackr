@@ -9,13 +9,13 @@
 Overlay et dashboard pour League of Legends : sélection des champions, stats en partie,
 bilan de fin de partie, builds high-elo, clips et bien plus, au même endroit.
 
-![Version](https://img.shields.io/badge/version-0.2.5-blueviolet)
+![Version](https://img.shields.io/badge/version-0.2.6-blueviolet)
 ![Plateforme](https://img.shields.io/badge/plateforme-Windows-0078D6)
 ![Electron](https://img.shields.io/badge/Electron-44-47848F)
 ![Licence](https://img.shields.io/badge/licence-propriétaire-lightgrey)
 
-[**Télécharger**](https://github.com/KIZAFOX/trackr-release/releases/latest) ·
-[Site officiel](https://kizafox.github.io/trackr-website/) ·
+[**Télécharger**](https://github.com/KIZAFOX/trackr/releases/latest) ·
+[Site officiel](https://kizafox.github.io/trackr/) ·
 [Guide d'installation](docs/INSTALLATION.md) ·
 [Roadmap](TODO.md)
 
@@ -30,6 +30,14 @@ au moment où ça compte : qui tu affrontes, comment tu joues, ce que tu devrais
 et comment ta session se déroule.
 
 ## Fonctionnalités
+
+### Profil et statistiques
+- **Tableau de bord** : rang, bilan des dernières parties et 8 indicateurs avec leur courbe, parties avec note, KP et les deux équipes.
+- **Stats perso** : progression de chaque indicateur partie après partie, champions et rôles, par file et sur 10 à 30 parties.
+- **Détail d'une partie** : phase de lane, déroulé, ordre des compétences, runes et rang de chaque joueur.
+- **Recherche d'un joueur** (`Pseudo#TAG`) et clic sur un joueur d'une partie pour ouvrir son profil.
+- **Comptes détectés** : chaque compte connecté sur ce PC reste consultable, même hors connexion.
+- **Classement** Challenger, Grand Maître et Maître, et **Pros** avec leurs comptes SoloQ.
 
 ### Avant la partie
 - **Sélection des champions** : rang, maîtrise et winrate des joueurs des deux équipes.
@@ -59,7 +67,7 @@ et comment ta session se déroule.
 
 ## Installation
 
-1. Télécharge `Trackr-Setup-x.y.z.exe` depuis la [dernière release](https://github.com/KIZAFOX/trackr-release/releases/latest).
+1. Télécharge `Trackr-Setup-x.y.z.exe` depuis la [dernière release](https://github.com/KIZAFOX/trackr/releases/latest).
 2. Lance l'installateur, choisis le dossier et le style de l'écran « Partie en cours ».
 3. Ouvre Trackr depuis le menu Démarrer, laisse le client League ouvert.
 
@@ -69,48 +77,10 @@ Détails, mises à jour et dépannage : [docs/INSTALLATION.md](docs/INSTALLATION
 > Une clé Riot API est **optionnelle** et reste locale. Sans elle, le dashboard et les infos
 > de base fonctionnent ; les rangs et maîtrises détaillés ne sont pas disponibles.
 
-## Développement
-
-Prérequis : Windows, Node.js 20+ et npm.
-
-```powershell
-npm ci
-npm start
-```
-
-Copie `.env.example` vers `.env` pour renseigner `RIOT_API_KEY` et `DEFAULT_REGION`
-(fichier ignoré par Git, jamais embarqué dans l'installateur).
-
-| Commande | Rôle |
-| --- | --- |
-| `npm start` | Lance l'application en développement |
-| `npm test` | Lance les tests (`node --test`) |
-| `npm run dist` | Construit l'installateur dans `dist/`, sans publication |
-| `npm run release` | Build, signature et publication GitHub (`GH_TOKEN`, `CSC_LINK`, `CSC_KEY_PASSWORD`) |
-
-Incrémente `version` dans `package.json` avant une release. Checklist complète : [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md).
-
-## Architecture
-
-```text
-src/
-  main/       Process principal Electron (cycle de vie, réglages, fenêtres, IPC, mises à jour)
-  preload/    Ponts sécurisés renderer <-> main
-  core/       Logique métier sans Electron, testable seule (client LCU, runes, builds, tilt...)
-  shared/     Modules UMD utilisés par Node et par les pages
-  renderer/   Interfaces : dashboard, overlay, splash, recorder
-telemetry-worker/  Worker Cloudflare : statistiques d'usage anonymes et tableau de bord du mainteneur
-assets/       Icône de l'application
-build/        Icône Windows et script NSIS
-tools/        Signature Windows, vérification de release
-test/         Tests automatisés
-docs/         Installation, release, clips, thèmes, roadmap
-```
-
 ## Données et automatisation
 
-Le crawler de Trackr (`lol-crawler`) analyse des parties classées Solo/Duo et publie ses données sur la branche
-`crawler-data` de [`KIZAFOX/trackr-release`](https://github.com/KIZAFOX/trackr-release) :
+Le crawler de Trackr analyse des parties classées Solo/Duo et publie ses données sur la branche
+`crawler-data` de [`KIZAFOX/trackr`](https://github.com/KIZAFOX/trackr) :
 
 - **Benchmarks** (`benchmarks.json`) : moyennes par rôle et par rang, affichées dans l'overlay.
 - **Champions** (`champions.json`, `champions/<id>.json`) : stats par rôle, matchups, synergies et builds,
@@ -118,20 +88,11 @@ Le crawler de Trackr (`lol-crawler`) analyse des parties classées Solo/Duo et p
 
 Trackr télécharge ces fichiers, les met en cache localement et continue de fonctionner hors ligne.
 
-## Documentation
-
-- [Installation](docs/INSTALLATION.md)
-- [Checklist de release](docs/RELEASE_CHECKLIST.md)
-- [Clips](docs/CLIPS.md)
-- [Thèmes](docs/THEMES.md)
-- [Roadmap](TODO.md)
-
 ## Statistiques d'usage anonymes
 
 Trackr envoie, au plus toutes les 6 h, un ping anonyme (identifiant aléatoire, version, système, région, options
-activées) pour que le développeur sache combien de personnes l'utilisent. Jamais de pseudo, de parties, de clips ni de
-clé API. Désactivable dans **Réglages → Statistiques d'usage anonymes**. Détails et tableau de bord du mainteneur :
-[telemetry-worker/README.md](telemetry-worker/README.md).
+activées, pages ouvertes sans ce qu'elles affichent) pour que le développeur sache combien de personnes l'utilisent. Jamais de pseudo, de parties, de clips ni de
+clé API. Désactivable dans **Réglages → Statistiques d'usage anonymes**.
 
 ## Respect du jeu et de Riot
 
@@ -145,6 +106,6 @@ League of Legends et Riot Games sont des marques déposées de Riot Games, Inc.*
 
 <div align="center">
 
-Fait par **KIZAFOX** · [kizafox.github.io/trackr-website](https://kizafox.github.io/trackr-website/)
+Fait par **KIZAFOX** · [kizafox.github.io/trackr](https://kizafox.github.io/trackr/)
 
 </div>
