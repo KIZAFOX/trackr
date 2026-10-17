@@ -47,8 +47,21 @@ code{font-size:.92em;background:#0c1a40;border-radius:4px;padding:1px 5px}
 .release .names{margin-top:4px}
 .tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:var(--accent);color:#fff;font:600 12px/1.6 var(--font-body);vertical-align:middle}
 .note{color:var(--muted);font-size:15px;padding-bottom:56px}
-footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted);font-size:14px}
-footer p{margin-top:10px}
+footer{overflow:hidden;border-top:1px solid var(--border);padding:48px 0 0;color:var(--muted);font-size:14px}
+.foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.foot-col h3{font:700 12px var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.foot-col ul{list-style:none;padding:0;display:grid;gap:10px}
+.foot-col a{color:var(--text);text-decoration:none;font-size:15px}
+.foot-col a:hover{color:var(--link)}
+.foot-col .discord-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:8px;background:#5865f2;color:#fff;font:700 15px var(--font-display)}
+.foot-col .discord-btn:hover{background:#4752c4;color:#fff}
+.foot-col svg{width:20px;height:20px}
+.socials{display:flex;gap:4px;margin-top:16px}
+.foot-col .socials a{display:grid;place-items:center;width:38px;height:38px;border-radius:8px}
+.foot-col .socials a:hover{background:#0c1a40;color:var(--text)}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;line-height:1.5}
+.wordmark{margin-top:24px;height:.62em;overflow:hidden;font:800 clamp(56px,15vw,150px)/1 var(--font-display);letter-spacing:.04em;text-align:center;color:rgba(255,255,255,.035);user-select:none}
+@media (max-width:640px){.foot-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.release{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.release{transition:none}}
 </style>
@@ -94,8 +107,46 @@ footer p{margin-top:10px}
   <p class="note">Les versions 0.1.0 à 0.1.9 sont sorties sans notes de version.</p>
 
   <footer>
-    <a href="../#telecharger">Télécharger Trackr</a> · <a href="https://discord.gg/R3EUfGbyjA">Serveur Discord</a> · <a href="https://x.com/TrackrGG">@TrackrGG sur X</a>
-    <p>Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
+    <!-- Même pied de page que website/index.html : à garder en phase. -->
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h3>Découvrir</h3>
+        <ul>
+          <li><a href="../#champ-select">Champ select</a></li>
+          <li><a href="../#tableau-de-bord">Tableau de bord</a></li>
+          <li><a href="../#builds">Builds</a></li>
+          <li><a href="../#classement">Classement</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Trackr</h3>
+        <ul>
+          <li><a href="https://github.com/KIZAFOX/trackr/releases/latest">Télécharger</a></li>
+          <li><a href="./">Notes de version</a></li>
+          <li><a href="../#installation">Installation</a></li>
+          <li><a href="https://github.com/KIZAFOX/trackr">Code et versions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Aide</h3>
+        <ul>
+          <li><a href="https://discord.gg/R3EUfGbyjA">Aide sur Discord</a></li>
+          <li><a href="https://github.com/KIZAFOX/trackr/issues/new">Signaler un bug</a></li>
+          <li><a href="https://github.com/KIZAFOX/trackr/issues">Proposer une idée</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Communauté</h3>
+        <a class="discord-btn" href="https://discord.gg/R3EUfGbyjA"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>Rejoindre le Discord</a>
+        <div class="socials">
+          <a href="https://discord.gg/R3EUfGbyjA" aria-label="Serveur Discord de Trackr"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
+          <a href="https://x.com/TrackrGG" aria-label="Trackr sur X (@TrackrGG)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+          <a href="https://github.com/KIZAFOX/trackr" aria-label="Trackr sur GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="legal">Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
+    <div class="wordmark" aria-hidden="true">TRACKR</div>
   </footer>
 </div>
 </body>
