@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trackr 0.2.6 · Notes de version de Trackr</title>
+<meta name="description" content="Trackr 0.2.6 : ce qui change dans Trackr.">
+<link rel="icon" href="../logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a1c;--surface:#08122d;--border:#12275a;--text:#eef3ff;--muted:#8fa3cf;--accent:#1a6dff;--link:#6fa8ff;--font-display:'Oxanium',system-ui,sans-serif;--font-body:'IBM Plex Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:400 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.top{padding:20px 0}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:800 22px var(--font-display)}
+.brand img{width:32px;height:32px;border-radius:8px}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;font-size:15px;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin-right:6px;color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--text);text-decoration:underline}
+.crumbs [aria-current]{color:var(--text)}
+header{padding:28px 0 28px;border-bottom:1px solid var(--border)}
+h1{font:800 clamp(32px,6vw,48px)/1.08 var(--font-display);margin-top:18px}
+time{display:block;margin-top:10px;color:var(--muted)}
+.lead{margin-top:12px;color:var(--muted);max-width:56ch}
+article{padding:32px 0 48px}
+article h2{font:700 26px/1.2 var(--font-display);margin:40px 0 12px}
+article h3{font:700 19px/1.3 var(--font-display);margin:28px 0 8px}
+article p,article ul{margin:0 0 16px}
+article ul{padding-left:22px}
+article li{margin-bottom:8px}
+code{font-size:.92em;background:#0c1a40;border-radius:4px;padding:1px 5px}
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:24px 0 56px;border-top:1px solid var(--border)}
+.pager a{text-decoration:none;font-weight:600}
+.pager a:hover{text-decoration:underline}
+.releases{list-style:none;padding:24px 0 32px;display:grid;gap:12px}
+.release{display:grid;grid-template-columns:140px 1fr;gap:6px 24px;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--text);transition:border-color .15s}
+.release:hover{border-color:var(--accent)}
+.release .num{font:800 28px/1.1 var(--font-display)}
+.release time{margin-top:4px;font-size:14px}
+.release .what{color:var(--muted);font-size:15px}
+.release .names{margin-top:4px}
+.tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:var(--accent);color:#fff;font:600 12px/1.6 var(--font-body);vertical-align:middle}
+.note{color:var(--muted);font-size:15px;padding-bottom:56px}
+footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted);font-size:14px}
+footer p{margin-top:10px}
+@media (max-width:560px){.release{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.release{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="brand" href="../"><img src="../logo.png" alt="">Trackr</a></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="../">Accueil</a></li><li><a href="./">Notes de version</a></li><li aria-current="page">0.2.6</li></ol></nav>
+  <header>
+    <h1>Trackr 0.2.6</h1>
+    <time datetime="2026-10-16">16 octobre 2026</time>
+  </header>
+  <article>
+<p>Trackr 0.2.6 apporte 9 nouveautés et 4 corrections.</p>
+<h2>Nouveautés</h2>
+<h3>Recherche d'un joueur</h3>
+<p>Tape son Riot ID (<code>Pseudo#TAG</code>) dans la barre de recherche et appuie sur Entrée pour ouvrir son profil, lu dans le client League, avec ses dernières parties et ses champions. Sans <code>#</code>, la recherche trouve toujours les champions.</p>
+<h3>Stats perso refaite</h3>
+<p>Un bandeau avec ton bilan, ta série et ta note moyenne, 8 indicateurs avec leur courbe et l'écart avec les parties d'avant, un graphique de progression de l'indicateur choisi (survol ou flèches pour voir chaque partie), et tes champions et rôles. Choix de la file et de 10, 20, 30 parties ou toutes.</p>
+<h3>Synchroniser l'overlay</h3>
+<p>En partie, un bouton dans Réglages → Overlay en jeu repère la barre de sorts et la minimap sur ton écran, puis place le surlignage des compétences et les blocs de l'overlay dans les zones libres. Le jeu doit être en « Sans bordure » et la capture reste sur ton PC.</p>
+<h3>Tes touches sur le surlignage des compétences</h3>
+<p>Chaque sort affiche la touche que tu utilises en jeu, selon ta disposition de clavier (A au lieu de Q en AZERTY).</p>
+<h3>Prochain objet plus complet</h3>
+<p>Le bloc de l'overlay montre les objets du build déjà achetés et ceux qui restent, la recette de l'objet suivant avec le prix de chaque composant, et prévient quand tu as assez d'or pour le prochain composant ou pour l'assemblage.</p>
+<h3>Cartes du salon</h3>
+<p>Dans Draft en direct, chaque membre du groupe apparaît avec son fond de profil, et son icône sertie dans son écusson (anneau de prestige avec le niveau, ou emblème de rang) quand le client le donne.</p>
+<h3>Changelog dans les réglages</h3>
+<p>Réglages → Changelog liste les notes de chaque version, de la plus récente à la plus ancienne, en français ou en anglais selon la langue de l'interface.</p>
+<h3>Place prise par Trackr</h3>
+<p>Réglages → Données et stockage montre ce que Trackr garde sur ton PC et sa taille. Le cache (images, données du crawler, journaux, restes des anciennes versions) se vide en un clic et se retélécharge au besoin. Tes données (historique Fin de partie, archive des parties, rangs relevés, comptes détectés) s'effacent une par une, avec une confirmation. Tes réglages et ta clé Riot ne sont jamais effacés.</p>
+<h3>Rejoindre depuis Discord</h3>
+<p>Quand ton salon est ouvert dans le client League (groupe ouvert) et qu'il reste de la place, ta présence Discord propose « Rejoindre ». Un ami qui a Trackr avec la présence Discord activée rejoint ton salon en un clic.</p>
+<h2>Changements</h2>
+<ul>
+  <li><strong>Classement refait</strong> : les trois premiers ont chacun leur carte en haut de la page, la 1re au centre et plus grande. Chaque carte montre l'icône de profil du joueur sur le splash de son champion favori (ou sur son fond de profil exact quand le client League le connaît), son rang, ses LP, son winrate et ses parties, dans sa couleur (or, argent ou bronze), avec une couronne et un socle. Un bandeau « Duel pour la 1re place » apparaît quand quelques LP séparent les deux premiers. Dans le tableau, une barre place chaque joueur entre le dernier et le premier de son palier, une colonne donne l'écart en LP avec le joueur au-dessus, mis en avant quand la place se joue à 15 LP ou moins, et l'étiquette « Nouveau » signale les joueurs arrivés récemment dans le palier. Un clic sur un joueur ouvre sa carte, façon carte à collectionner : bilan, winrate, écarts avec ses voisins et avec le seuil, et un bouton pour ouvrir son profil dans Trackr. La page est aussi traduite en anglais.</li>
+  <li><strong>Nouvelle adresse</strong> : le site de Trackr est maintenant sur <a href="https://kizafox.github.io/trackr/">kizafox.github.io/trackr</a> et les versions sur <a href="https://github.com/KIZAFOX/trackr/releases">github.com/KIZAFOX/trackr</a>. Le bouton du site dans Trackr et le lien du statut Discord mènent à la nouvelle adresse.</li>
+  <li><strong>Code réorganisé</strong> : l'historique des parties, Fin de partie, Builds et les clips sont rangés dans des fichiers plus courts. Rien ne change à l'écran.</li>
+  <li><strong>Statistiques d'usage</strong> : en plus des options activées, Trackr compte les pages ouvertes depuis le dernier envoi (Draft en direct, Stats perso, Classement, Pros, profil d'un joueur, recherche de joueur, onglets du détail d'une partie), jamais ce qu'elles affichent. Toujours désactivable dans Réglages → Général.</li>
+  <li><strong>Courbe de rang plus lisible</strong> : dans Fin de partie, quand tes LP bougent peu, l'axe affiche des repères tous les 50, 25 ou 10 LP au lieu d'une seule ligne de division.</li>
+</ul>
+<h2>Corrections</h2>
+<ul>
+  <li><strong>Présence Discord</strong> : la description du réglage annonçait ton rang, que la présence n'a jamais affiché. Elle dit maintenant ce qui est vraiment montré.</li>
+  <li><strong>Résumé en image</strong> : le bouton « Copier le résumé en image » est de retour en vue dans le détail d'une partie, à côté des onglets, au lieu d'être caché dans l'onglet Général.</li>
+  <li><strong>Longues parties enregistrées</strong> : la vidéo d'une longue partie complète pouvait rester au format brut, sans durée ni avance rapide dans le lecteur Windows et sur Discord, et on ne pouvait pas en extraire un passage. Elle est maintenant convertie en MP4 classique, et la découpe marche aussi sur les vidéos restées brutes.</li>
+  <li><strong>Barres de défilement</strong> : plus de barres blanches dans la barre latérale et les listes quand la fenêtre est réduite, et le plateau de Draft en direct passe sur une colonne au lieu de défiler sur le côté.</li>
+</ul>
+<p>Téléchargement et notes complètes : <a href="https://github.com/KIZAFOX/trackr/releases/tag/v0.2.6">https://github.com/KIZAFOX/trackr/releases/tag/v0.2.6</a></p>
+  </article>
+  <nav class="pager" aria-label="Autres versions">
+    <a href="0.2.5.html">← 0.2.5</a>
+    <a href="./">Toutes les versions</a>
+  </nav>
+  <footer>
+    <a href="../#telecharger">Télécharger Trackr</a> · <a href="https://discord.gg/R3EUfGbyjA">Serveur Discord</a> · <a href="https://x.com/TrackrGG">@TrackrGG sur X</a>
+    <p>Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
+  </footer>
+</div>
+</body>
+</html>

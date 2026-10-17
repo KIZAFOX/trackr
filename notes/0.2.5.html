@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trackr 0.2.5 · Notes de version de Trackr</title>
+<meta name="description" content="Trackr 0.2.5 : ce qui change dans Trackr.">
+<link rel="icon" href="../logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a1c;--surface:#08122d;--border:#12275a;--text:#eef3ff;--muted:#8fa3cf;--accent:#1a6dff;--link:#6fa8ff;--font-display:'Oxanium',system-ui,sans-serif;--font-body:'IBM Plex Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:400 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.top{padding:20px 0}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:800 22px var(--font-display)}
+.brand img{width:32px;height:32px;border-radius:8px}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;font-size:15px;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin-right:6px;color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--text);text-decoration:underline}
+.crumbs [aria-current]{color:var(--text)}
+header{padding:28px 0 28px;border-bottom:1px solid var(--border)}
+h1{font:800 clamp(32px,6vw,48px)/1.08 var(--font-display);margin-top:18px}
+time{display:block;margin-top:10px;color:var(--muted)}
+.lead{margin-top:12px;color:var(--muted);max-width:56ch}
+article{padding:32px 0 48px}
+article h2{font:700 26px/1.2 var(--font-display);margin:40px 0 12px}
+article h3{font:700 19px/1.3 var(--font-display);margin:28px 0 8px}
+article p,article ul{margin:0 0 16px}
+article ul{padding-left:22px}
+article li{margin-bottom:8px}
+code{font-size:.92em;background:#0c1a40;border-radius:4px;padding:1px 5px}
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:24px 0 56px;border-top:1px solid var(--border)}
+.pager a{text-decoration:none;font-weight:600}
+.pager a:hover{text-decoration:underline}
+.releases{list-style:none;padding:24px 0 32px;display:grid;gap:12px}
+.release{display:grid;grid-template-columns:140px 1fr;gap:6px 24px;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--text);transition:border-color .15s}
+.release:hover{border-color:var(--accent)}
+.release .num{font:800 28px/1.1 var(--font-display)}
+.release time{margin-top:4px;font-size:14px}
+.release .what{color:var(--muted);font-size:15px}
+.release .names{margin-top:4px}
+.tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:var(--accent);color:#fff;font:600 12px/1.6 var(--font-body);vertical-align:middle}
+.note{color:var(--muted);font-size:15px;padding-bottom:56px}
+footer{border-top:1px solid var(--border);padding:28px 0 40px;color:var(--muted);font-size:14px}
+footer p{margin-top:10px}
+@media (max-width:560px){.release{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.release{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="brand" href="../"><img src="../logo.png" alt="">Trackr</a></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="../">Accueil</a></li><li><a href="./">Notes de version</a></li><li aria-current="page">0.2.5</li></ol></nav>
+  <header>
+    <h1>Trackr 0.2.5</h1>
+    <time datetime="2026-10-15">15 octobre 2026</time>
+  </header>
+  <article>
+<p>Trackr 0.2.5 apporte 12 nouveautés et 4 corrections.</p>
+<h2>Nouveautés</h2>
+<h3>Classement</h3>
+<p>Les joueurs Challenger, Grand Maître et Maître de ta région, en Solo/Duo ou en Flex, avec le podium, les LP nécessaires pour chaque palier et ta propre ligne si tu y figures. Les données viennent du crawler de Trackr (aucune clé Riot nécessaire) et la dernière copie reste consultable hors ligne.</p>
+<h3>Pros</h3>
+<p>La liste des joueurs pros avec leurs comptes SoloQ, leur rang et leurs champions les plus joués. Recherche par nom, filtres par rôle et par ligue.</p>
+<h3>Comptes détectés</h3>
+<p>Un sélecteur à côté du logo liste les comptes déjà connectés sur ce PC. Chacun s'ouvre avec son rang et ses parties archivées, même s'il n'est pas connecté, et repasse en direct dès qu'il se connecte.</p>
+<h3>Profil d'un joueur</h3>
+<p>Un clic sur un joueur dans le détail d'une partie ouvre son profil, lu dans le client League, avec ses dernières parties et ses champions. Retour ramène au profil précédent.</p>
+<h3>Rangs dans l'historique</h3>
+<p>Le détail d'une partie montre le rang de chaque joueur au moment de la partie et le MMR estimé (moyenne des joueurs classés), relevés pendant la partie quand Trackr est ouvert. Les LP gagnés ou perdus suivent le résultat.</p>
+<h3>Fin de partie refaite</h3>
+<p>Filtres compacts, ta dernière partie avec le bilan de la sélection, la courbe de rang, la comparaison avec une session de référence et la liste des parties.</p>
+<h3>Prochain objet dans l'overlay</h3>
+<p>L'objet suivant du build le plus joué pour ton champion et ton poste, l'or qu'il te manque et une alerte quand tu peux l'acheter. Masqué en ARAM et ARAM Mayhem.</p>
+<h3>Taille des blocs de l'overlay</h3>
+<p>Un curseur par bloc dans Réglages → Overlay en jeu, avec aperçu en direct pendant la partie.</p>
+<h3>Écart d'or plus juste</h3>
+<p>L'overlay affiche ton or en poche et l'écart de valeur des objets avec l'équipe adverse et avec ton adversaire de lane, au lieu d'une estimation.</p>
+<h3>Clips en MP4</h3>
+<p>Les vidéos sont enregistrées en MP4, lisibles avec leur durée et l'avance rapide dans le lecteur Windows et sur Discord. Les clips d'une même partie sont regroupés, l'enregistrement complet en premier.</p>
+<h3>Timeline des parties complètes</h3>
+<p>Les événements de la partie sont marqués sur la vidéo, et tu peux en extraire un passage en clip séparé.</p>
+<h3>Liens Trackr</h3>
+<p>Site, X et GitHub accessibles depuis la barre latérale.</p>
+<h2>Corrections</h2>
+<ul>
+  <li><strong>Import automatique des runes</strong> : l'erreur <code>HTTP 400</code> est corrigée, le compte est retrouvé côté Riot à partir de son Riot ID. Un quota Riot atteint donne maintenant un message clair.</li>
+  <li><strong>Benchmarking en ARAM</strong> : masqué en ARAM et ARAM Mayhem, où il n'y a pas de poste à comparer.</li>
+  <li><strong>Enregistrements interrompus</strong> : une vidéo coupée par un plantage ou une fermeture est récupérée au démarrage suivant et reste lisible. Un clip ne remplace plus une vidéo du même nom.</li>
+  <li><strong>Dossier des clips</strong> : les fichiers internes de Trackr sont rangés dans un sous-dossier caché, seules les vidéos restent visibles.</li>
+</ul>
+<p>Téléchargement et notes complètes : <a href="https://github.com/KIZAFOX/trackr/releases/tag/v0.2.5">https://github.com/KIZAFOX/trackr/releases/tag/v0.2.5</a></p>
+  </article>
+  <nav class="pager" aria-label="Autres versions">
+    <a href="0.2.4.html">← 0.2.4</a>
+    <a href="./">Toutes les versions</a>
+  </nav>
+  <footer>
+    <a href="../#telecharger">Télécharger Trackr</a> · <a href="https://discord.gg/R3EUfGbyjA">Serveur Discord</a> · <a href="https://x.com/TrackrGG">@TrackrGG sur X</a>
+    <p>Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
+  </footer>
+</div>
+</body>
+</html>

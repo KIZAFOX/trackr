@@ -1,0 +1,115 @@
+{
+  "note": "Les versions 0.1.0 à 0.1.9 sont sorties sans notes de version.",
+  "entries": [
+    {
+      "path": "notes/0.2.6.html",
+      "version": "0.2.6",
+      "title": "Trackr 0.2.6",
+      "date": "2026-10-16",
+      "counts": {
+        "new": 9,
+        "other": 5,
+        "fixed": 4
+      },
+      "highlights": [
+        "Recherche d'un joueur",
+        "Stats perso refaite",
+        "Synchroniser l'overlay"
+      ]
+    },
+    {
+      "path": "notes/0.2.5.html",
+      "version": "0.2.5",
+      "title": "Trackr 0.2.5",
+      "date": "2026-10-15",
+      "counts": {
+        "new": 12,
+        "other": 0,
+        "fixed": 4
+      },
+      "highlights": [
+        "Classement",
+        "Pros",
+        "Comptes détectés"
+      ]
+    },
+    {
+      "path": "notes/0.2.4.html",
+      "version": "0.2.4",
+      "title": "Trackr 0.2.4",
+      "date": "2026-10-14",
+      "counts": {
+        "new": 5,
+        "other": 0,
+        "fixed": 3
+      },
+      "highlights": [
+        "Nouvelle interface",
+        "Tableau de bord refait",
+        "Détail d'une partie"
+      ]
+    },
+    {
+      "path": "notes/0.2.3.html",
+      "version": "0.2.3",
+      "title": "Trackr 0.2.3",
+      "date": "2026-10-14",
+      "counts": {
+        "new": 5,
+        "other": 0,
+        "fixed": 6
+      },
+      "highlights": [
+        "Nouvel accueil",
+        "Raccourci global pour ouvrir Trackr (Alt + N par défaut)",
+        "Données du crawler Trackr"
+      ]
+    },
+    {
+      "path": "notes/0.2.2.html",
+      "version": "0.2.2",
+      "title": "Trackr 0.2.2",
+      "date": "2026-10-14",
+      "counts": {
+        "new": 4,
+        "other": 0,
+        "fixed": 1
+      },
+      "highlights": [
+        "Aide aux compétences en partie",
+        "Mise à jour en un clic",
+        "Trackr sur un second écran en partie"
+      ]
+    },
+    {
+      "path": "notes/0.2.1.html",
+      "version": "0.2.1",
+      "title": "Trackr 0.2.1",
+      "date": "2026-10-13",
+      "counts": {
+        "new": 1,
+        "other": 0,
+        "fixed": 2
+      },
+      "highlights": [
+        "Historique de l'accueil plus long"
+      ]
+    },
+    {
+      "path": "notes/0.2.0.html",
+      "version": "0.2.0",
+      "title": "Trackr 0.2.0",
+      "date": "2026-10-13",
+      "counts": {
+        "new": 7,
+        "other": 0,
+        "fixed": 3
+      },
+      "highlights": [
+        "English interface / Interface en anglais",
+        "Sélection des champions",
+        "Accueil"
+      ]
+    }
+  ]
+}
