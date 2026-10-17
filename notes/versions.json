@@ -2,6 +2,22 @@
   "note": "Les versions 0.1.0 à 0.1.9 sont sorties sans notes de version.",
   "entries": [
     {
+      "path": "notes/0.2.7.html",
+      "version": "0.2.7",
+      "title": "Trackr 0.2.7",
+      "date": "2026-10-17",
+      "counts": {
+        "new": 40,
+        "other": 6,
+        "fixed": 5
+      },
+      "highlights": [
+        "Contre-picks dans Draft en direct",
+        "Page Esport",
+        "Page Champions"
+      ]
+    },
+    {
       "path": "notes/0.2.6.html",
       "version": "0.2.6",
       "title": "Trackr 0.2.6",

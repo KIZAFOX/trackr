@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trackr 0.2.7 · Notes de version de Trackr</title>
+<meta name="description" content="Trackr 0.2.7 : ce qui change dans Trackr.">
+<link rel="icon" href="../logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040a1c;--surface:#08122d;--border:#12275a;--text:#eef3ff;--muted:#8fa3cf;--accent:#1a6dff;--link:#6fa8ff;--font-display:'Oxanium',system-ui,sans-serif;--font-body:'IBM Plex Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:400 17px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.top{padding:20px 0}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:800 22px var(--font-display)}
+.brand img{width:32px;height:32px;border-radius:8px}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;font-size:15px;color:var(--muted)}
+.crumbs li+li::before{content:"›";margin-right:6px;color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--text);text-decoration:underline}
+.crumbs [aria-current]{color:var(--text)}
+header{padding:28px 0 28px;border-bottom:1px solid var(--border)}
+h1{font:800 clamp(32px,6vw,48px)/1.08 var(--font-display);margin-top:18px}
+time{display:block;margin-top:10px;color:var(--muted)}
+.lead{margin-top:12px;color:var(--muted);max-width:56ch}
+article{padding:32px 0 48px}
+article h2{font:700 26px/1.2 var(--font-display);margin:40px 0 12px}
+article h3{font:700 19px/1.3 var(--font-display);margin:28px 0 8px}
+article p,article ul{margin:0 0 16px}
+article ul{padding-left:22px}
+article li{margin-bottom:8px}
+code{font-size:.92em;background:#0c1a40;border-radius:4px;padding:1px 5px}
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:24px 0 56px;border-top:1px solid var(--border)}
+.pager a{text-decoration:none;font-weight:600}
+.pager a:hover{text-decoration:underline}
+.releases{list-style:none;padding:24px 0 32px;display:grid;gap:12px}
+.release{display:grid;grid-template-columns:140px 1fr;gap:6px 24px;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--text);transition:border-color .15s}
+.release:hover{border-color:var(--accent)}
+.release .num{font:800 28px/1.1 var(--font-display)}
+.release time{margin-top:4px;font-size:14px}
+.release .what{color:var(--muted);font-size:15px}
+.release .names{margin-top:4px}
+.tag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:99px;background:var(--accent);color:#fff;font:600 12px/1.6 var(--font-body);vertical-align:middle}
+.note{color:var(--muted);font-size:15px;padding-bottom:56px}
+footer{overflow:hidden;border-top:1px solid var(--border);padding:48px 0 0;color:var(--muted);font-size:14px}
+.foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.foot-col h3{font:700 12px var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.foot-col ul{list-style:none;padding:0;display:grid;gap:10px}
+.foot-col a{color:var(--text);text-decoration:none;font-size:15px}
+.foot-col a:hover{color:var(--link)}
+.foot-col .discord-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:8px;background:#5865f2;color:#fff;font:700 15px var(--font-display)}
+.foot-col .discord-btn:hover{background:#4752c4;color:#fff}
+.foot-col svg{width:20px;height:20px}
+.socials{display:flex;gap:4px;margin-top:16px}
+.foot-col .socials a{display:grid;place-items:center;width:38px;height:38px;border-radius:8px}
+.foot-col .socials a:hover{background:#0c1a40;color:var(--text)}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;line-height:1.5}
+.wordmark{margin-top:24px;height:.62em;overflow:hidden;font:800 clamp(56px,15vw,150px)/1 var(--font-display);letter-spacing:.04em;text-align:center;color:rgba(255,255,255,.035);user-select:none}
+@media (max-width:640px){.foot-grid{grid-template-columns:1fr 1fr}}
+.help .release{grid-template-columns:1fr}
+.help .num{font-size:22px}
+@media (max-width:560px){.release{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.release{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="brand" href="../"><img src="../logo.png" alt="">Trackr</a></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane"><ol><li><a href="../">Accueil</a></li><li><a href="./">Notes de version</a></li><li aria-current="page">0.2.7</li></ol></nav>
+  <header>
+    <h1>Trackr 0.2.7</h1>
+    <time datetime="2026-10-17">17 octobre 2026</time>
+  </header>
+  <article>
+<p>Trackr 0.2.7 apporte 40 nouveautés et 5 corrections.</p>
+<h2>Nouveautés</h2>
+<h3>Contre-picks dans Draft en direct</h3>
+<p>Pendant la sélection, un panneau propose les 5 champions de ton poste qui gagnent le plus contre les champions déjà pris en face, toute l'équipe adverse et pas seulement ton vis-à-vis. Chaque proposition montre son winrate moyen et son winrate contre chaque pick adverse. Les champions déjà pris sont retirés, un winrate sur peu de parties compte moins, et un clic ouvre la fiche Builds du champion. Les données viennent du crawler de Trackr (Solo/Duo, patch en cours), sans clé Riot.</p>
+<h3>Page Esport</h3>
+<p>Dans Compétitif, le match du moment s'affiche en grand en haut de la page (le direct de la plus grande compétition en cours, sinon le prochain match de ta ligue), avec un bouton vers la chaîne Twitch d'OTPLOL. En dessous, choisis ta ligue parmi des cartes avec son logo en fond (LEC, LCK, LPL, LFL, Mondial, MSI, les autres derrière « Autres ligues ») et vois les matchs en direct, les prochains matchs et les derniers résultats, avec le logo des équipes, le score, la date et l'heure dans ton fuseau horaire. Pendant un match en direct, la page se met à jour toute seule chaque minute. Un clic sur un match joué ou en cours déplie le détail de chaque partie du BO : les champions des deux équipes avec le joueur, son poste, son KDA et ses CS, les kills, l'or, les tourelles, les dragons et les barons de chaque équipe, la durée et le vainqueur. La ligue choisie est gardée d'un lancement à l'autre. Hors ligne, la dernière copie reste affichée, et si lolesports.com change sa clé d'accès, Trackr reprend la nouvelle sans mise à jour de l'application. Les données viennent de lolesports.com, sans clé Riot.</p>
+<h3>Page Champions</h3>
+<p>La tier list Solo/Duo du patch en cours, par poste et par rang (tous rangs, Or, Platine, Émeraude, Diamant, Master+). Une rangée par tier, de S+ à D, avec le winrate de chaque champion, ou un tableau triable (winrate, pick rate, ban rate, parties). Un clic ouvre la fiche du champion : son illustration, ses chiffres, son winrate selon le rang, et des boutons vers son build et ses match-ups. Le tier est calculé par Trackr (winrate corrigé quand il y a peu de parties, petit bonus de popularité) et la méthode est expliquée sur la page.</p>
+<h3>Page Matchups</h3>
+<p>Choisis ton champion et son poste, puis vois ses match-ups favorables et difficiles et la liste de tous ses adversaires de lane, avec le winrate, l'écart d'or et de CS en fin de partie et le nombre de parties. Un clic sur un adversaire affiche le duel face à face, avec la rune et les objets les plus joués contre cet adversaire (parties Diamant et plus), ou le build du poste quand il n'y en a pas assez, et un bouton pour voir le même duel depuis l'adversaire. Les match-ups sur peu de parties sont signalés.</p>
+<h3>Rapport de la partie</h3>
+<p>Dans le détail d'une partie classée ou normale, onglet Détails, un rapport liste tes morts avant 10 min avec leur minute, ton écart de CS avec ton adversaire de lane à 10 et 15 min, et compare ta rune principale et tes objets au build le plus joué de ton champion à ce poste.</p>
+<h3>Page Replays</h3>
+<p>Les replays enregistrés par League (fichiers <code>.rofl</code>) avec, pour chacun, le champion, la victoire ou la défaite, la file, la durée et la taille quand Trackr connaît la partie. « Regarder » lance le replay via le client League ; un replay d'un autre patch est signalé, car le jeu ne le lit plus. L'ancienne entrée « Replays » du menu, qui ouvrait les clips, s'appelle maintenant « Clips ».</p>
+<h3>Revoir un moment depuis l'historique</h3>
+<p>Dans le détail d'une partie, onglet Détails, les kills, morts, assists et objectifs filmés sont entourés sur le déroulé. Un clic ouvre le clip qui contient ce moment, ou l'enregistrement de la partie entière quelques secondes avant ; « Ouvrir l'enregistrement » lance la partie entière depuis le début. Les anciennes parties entières sont calées sur leurs repères de kills et de morts ; pour les anciens clips courts, la position est approximative.</p>
+<h3>Place maximale des clips</h3>
+<p>Dans Réglages → Clips → Stockage, choisis une limite (5 à 100 Go). Quand un nouveau clip la ferait dépasser, les plus anciens sont supprimés pour lui faire de la place ; en partie entière, la vérification continue pendant l'enregistrement, sans jamais toucher à la vidéo en cours. La place utilisée s'affiche sous le réglage.</p>
+<h3>Multi-kill, Ace et First Blood</h3>
+<p>Trois nouveaux moments qui déclenchent un clip. Un clip prend le nom du moment le plus fort qu'il contient (un kill suivi d'un penta devient « Penta kill »), et la liste des clips d'une partie se filtre par Multi-kills, Aces et First Blood.</p>
+<h3>Clip au raccourci</h3>
+<p>Un raccourci global (Alt+C par défaut, à activer dans Réglages → Clips) garde les 20 dernières secondes comme un clip, même quand le jeu a le focus ; en partie entière, il pose un repère sur la timeline.</p>
+<h3>Son et écran des clips</h3>
+<p>Choisis l'écran filmé (automatique : la fenêtre League) et le son : son du PC, son du PC et micro mélangés (micro au choix), ou aucun son.</p>
+<h3>Partager un clip sur Discord</h3>
+<p>Un bouton du lecteur de clip copie la vidéo et met Discord au premier plan s'il est ouvert ; un Ctrl+V dans la conversation la joint au message. Trackr prévient au-delà de 10 Mo, la limite de Discord sans Nitro.</p>
+<h3>Notifications Windows</h3>
+<p>Partie trouvée, builds d'un nouveau patch et nouvelle version de Trackr prête à installer, chacune désactivable dans Réglages → Général.</p>
+<h3>Liste des raccourcis</h3>
+<p>Réglages → Général liste les raccourcis clavier et souris de Trackr, avec les touches que tu as choisies pour ouvrir Trackr et enregistrer un clip.</p>
+<h3>Serveur Discord de Trackr</h3>
+<p>Le logo Discord en bas de la barre latérale, grisé jusqu'ici, ouvre l'invitation du serveur dans ton navigateur.</p>
+<h3>Profils depuis Pros</h3>
+<p>Chaque compte d'un pro a un bouton « Voir le profil » qui ouvre son profil dans Trackr, comme la carte du Classement.</p>
+<h3>Progression dans le Tableau de bord</h3>
+<p>À droite de tes parties, ta courbe de LP sur 30 jours (Solo/Duo ou Flex, chaque point est une partie classée avec son résultat et ses LP), et le bilan de tes 7 derniers jours : parties, bilan, LP, meilleur champion, et CS/min, morts et KDA comparés aux 7 jours d'avant. Ces chiffres viennent des parties enregistrées en fin de partie, Trackr ouvert.</p>
+<h3>Bilan de ta semaine</h3>
+<p>À la première ouverture de Trackr de la semaine, une notification Windows résume la semaine passée (parties, bilan, LP, meilleur champion). Désactivable dans Réglages → Général.</p>
+<h3>Objectif personnel</h3>
+<p>Choisis un indicateur (CS/min, morts par partie, KDA ou score de vision par minute) et un seuil dans le Tableau de bord. Trackr montre partie après partie s'il est tenu, et Fin de partie te le rappelle sur la dernière partie.</p>
+<h3>Joue souvent avec</h3>
+<p>Les joueurs croisés au moins 3 fois dans ton équipe, avec le nombre de parties ensemble, le bilan et le winrate. Un clic ouvre leur profil. Calculé sur les parties gardées sur ton PC ; client ouvert, Trackr complète le détail des parties qui en manquent.</p>
+<h3>CS et or face à ton adversaire de lane</h3>
+<p>Dans le détail d'une partie, onglet Détails, deux courbes minute par minute (toi en bleu, ton vis-à-vis en rouge) ; survole-les ou utilise les flèches pour lire les chiffres de chaque minute.</p>
+<h3>Déroulé lisible au survol</h3>
+<p>Une ligne verticale suit la souris (ou les flèches) sur le déroulé de la partie et affiche l'écart d'or de l'équipe et le score à cette minute.</p>
+<h3>Carte des morts</h3>
+<p>Dans l'onglet Détails, où le joueur analysé est mort sur la carte, à quelle minute et tué par qui ; dans Stats perso, toutes tes morts sur les 20 dernières parties en Faille de la sélection. Une mort est « isolée » quand aucun allié n'était à moins de 2 000 unités (positions des alliés relevées à la minute la plus proche, la seule que donne le client).</p>
+<h3>Suggestions dans la recherche</h3>
+<p>Pendant la frappe, la barre de recherche propose tes joueurs suivis, tes comptes détectés, les joueurs consultés récemment et les champions ; flèches haut et bas pour choisir, Entrée pour ouvrir.</p>
+<h3>Recherche client fermé</h3>
+<p>Avec une clé Riot (Réglages → Compte), chercher <code>Pseudo#TAG</code> marche aussi quand le client League est fermé. Le profil, les 20 dernières parties, leur détail et leur déroulé viennent alors de l'API Riot.</p>
+<h3>Joueurs suivis</h3>
+<p>Sur le profil d'un joueur (duo, ami, rival), le bouton « Suivre » l'épingle. Tes joueurs suivis sont listés dans la colonne Progression du Tableau de bord et en tête des suggestions de la recherche ; un clic ouvre leur profil et leurs dernières parties.</p>
+<h3>Comparer deux profils</h3>
+<p>Sur un profil consulté, « Comparer avec moi » (ou « avec mon compte » pour un autre de tes comptes) met côte à côte les rangs, le KDA, le winrate, les CS/min, l'or et les dégâts par minute, la vision, les morts et les champions les plus joués sur les 20 dernières parties de chacun.</p>
+<h3>Profil consulté plus complet</h3>
+<p>Ses maîtrises de champion (lues dans le client) et « Déjà croisé », les parties que tu as jouées avec ou contre ce joueur parmi celles gardées sur ton PC, avec ton bilan.</p>
+<h3>Draft en direct sans clé Riot</h3>
+<p>Pour chaque joueur dont le pseudo est visible, son champion le plus joué sur ses 20 dernières parties, son winrate dessus, son winrate sur le champion choisi et l'étiquette « One trick » quand 60 % de ses parties sont sur le même champion, lus dans l'historique du client.</p>
+<h3>Bans suggérés</h3>
+<p>Dans Draft en direct, les 3 champions contre lesquels tes 2 champions les plus joués à ton poste principal gagnent le moins (données du crawler de Trackr, au moins 5 parties par match-up).</p>
+<h3>Déjà croisé en Draft et en partie</h3>
+<p>Les cartes de tes alliés en Draft et la Partie en cours disent avec qui et contre qui tu as déjà joué, avec ton bilan, d'après les parties gardées sur ton PC.</p>
+<h3>Groupes adverses</h3>
+<p>Dans la Partie en cours, Trackr signale les joueurs de chaque équipe qui jouent ensemble (au moins 2 parties communes dans leurs 20 dernières, lues dans le client).</p>
+<h3>Sorts d'invocateur adverses</h3>
+<p>Dans la Partie en cours, un clic sur le sort d'un adversaire quand il l'utilise lance un compte à rebours depuis son temps de recharge de base ; un second clic l'annule.</p>
+<h3>Overlay par mode de jeu</h3>
+<p>Réglages → Overlay en jeu, « Profil par mode de jeu » règle la taille et la position des blocs à part pour l'ARAM, l'Arena et les autres modes. Un mode sans réglage à lui garde le placement par défaut.</p>
+<h3>Phases de jeu dans Draft en direct</h3>
+<p>Le panneau, jusqu'ici « bientôt », montre le winrate moyen des champions de chaque équipe selon la durée de la partie (moins de 25 min, 25 à 35 min, plus de 35 min) et la phase où ton équipe a le plus d'avance. L'onglet Builds montre aussi le winrate du champion selon la durée.</p>
+<h3>Ouverture en jungle</h3>
+<p>Dans Draft en direct (panneau Jungle, jusqu'ici « bientôt ») et dans l'onglet Builds, l'ouverture la plus jouée de chaque jungler : son côté de la carte à 2:00 puis à 4:00, d'après les parties Émeraude et plus.</p>
+<h3>Objets 4 à 6 selon l'équipe adverse</h3>
+<p>L'onglet Builds liste les objets achetés nettement plus souvent que d'habitude contre 3 champions AP ou plus, une équipe presque toute AD, 2 tanks ou plus, ou 2 gros soigneurs ou plus.</p>
+<h3>Build Émeraude et plus, stats par serveur</h3>
+<p>L'onglet Builds propose le build calculé sur les parties Émeraude et plus (plus de parties) à côté de celui Diamant et plus, et, quand Trackr collecte plusieurs serveurs, le winrate sur le tien (Réglages → Compte, région).</p>
+<h3>Benchmarks à la bonne minute</h3>
+<p>Entre 7:30 et 27:30, le bloc Benchmarking de l'overlay compare ton CS/min et ton or/min aux joueurs de ton rang à la même minute de partie (10, 15, 20 ou 25 min) au lieu des moyennes de fin de partie, quand ces repères sont publiés. Les benchmarks et le Classement suivent aussi ton serveur quand Trackr en collecte plusieurs.</p>
+<h3>Pause après 3 défaites</h3>
+<p>Dans l'en-tête du Tableau de bord, trois défaites d'affilée dans la session font proposer une pause de 10 minutes. Coupée avec l'alerte de tilt.</p>
+<h2>Changements</h2>
+<ul>
+  <li><strong>Builds plus honnêtes</strong> : l'onglet Builds dit quand ses stats mélangent plusieurs patchs (le patch en cours n'a pas encore assez de parties) et marque « peu fiable » un poste sous 50 parties ou un build sous 30 parties.</li>
+  <li><strong>Détail des parties hors connexion</strong> : le détail et le déroulé de tes parties sont gardés sur ton PC (les 10 dernières sont préchargées quand l'historique s'affiche), et s'ouvrent aussi client League fermé. Ils prennent quelques Ko par partie et s'effacent avec l'archive dans Réglages → Données et stockage.</li>
+  <li><strong>Note des parties selon le poste</strong> : la note pèse les critères selon ton poste (un support est jugé sur sa vision et ses kills et assists, plus sur ses CS ni ses dégâts, un ADC davantage sur ses dégâts), et les repères de CS et de vision suivent les vraies moyennes relevées par Trackr.</li>
+  <li><strong>Éditeur de position de l'overlay</strong> : un bloc lâché sur un autre se range à la place libre la plus proche, et les blocs recouverts sont signalés pendant le déplacement : ils ne peuvent plus se cacher l'un l'autre en jeu.</li>
+  <li><strong>Messages d'erreur plus clairs</strong> : quand le profil, l'historique, une partie ou les rangs ne se chargent pas, Trackr dit pourquoi en clair (client League qui finit de charger, serveurs Riot en panne, connexion internet coupée, limite de requêtes de Riot, clé d'accès refusée) au lieu d'un code technique. Une panne passagère de Riot ou du réseau est réessayée toute seule une ou deux fois avant d'afficher le message.</li>
+  <li><strong>Code réorganisé</strong> : la courbe de rang et la comparaison de sessions de Fin de partie sont rangées dans leurs propres fichiers. Rien ne change à l'écran.</li>
+</ul>
+<h2>Corrections</h2>
+<ul>
+  <li><strong>Bilans en anglais</strong> : les bilans « 7V 3D » s'affichent « 7W 3L » quand l'interface est en anglais.</li>
+  <li><strong>Icônes des sorts en partie</strong> : les sorts d'invocateur des joueurs gardent leur identifiant quelle que soit la langue du jeu, ce qui sert au suivi des sorts adverses.</li>
+  <li><strong>Traductions anglaises</strong> : les rangs avec division (« Émeraude III ») s'affichent maintenant en anglais (« Emerald III »), et les pourcentages s'écrivent à l'anglaise (« 54.7% » au lieu de « 54,7 % »).</li>
+  <li><strong>Comparaison de Fin de partie</strong> : la session d'avant est de nouveau la référence par défaut, au lieu de « Aucune ». Ton choix reste gardé quand tu en fais un.</li>
+  <li><strong>Lisibilité et clavier</strong> : les interrupteurs des Réglages montrent un contour quand on y arrive au clavier, les textes gris trop pâles sont plus lisibles, les titres de section ne sont plus en capitales espacées, et le point « en direct » ne pulse plus quand Windows demande moins d'animations.</li>
+</ul>
+  </article>
+  <nav class="pager" aria-label="Autres versions">
+    <a href="0.2.6.html">← 0.2.6</a>
+    <a href="./">Toutes les versions</a>
+  </nav>
+  <footer>
+    <!-- Même pied de page que website/index.html : à garder en phase. -->
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h3>Découvrir</h3>
+        <ul>
+          <li><a href="../#champ-select">Champ select</a></li>
+          <li><a href="../#tableau-de-bord">Tableau de bord</a></li>
+          <li><a href="../#builds">Builds</a></li>
+          <li><a href="../#classement">Classement</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Trackr</h3>
+        <ul>
+          <li><a href="https://github.com/KIZAFOX/trackr/releases/latest">Télécharger</a></li>
+          <li><a href="../notes/">Notes de version</a></li>
+          <li><a href="../#installation">Installation</a></li>
+          <li><a href="https://github.com/KIZAFOX/trackr">Code et versions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Aide</h3>
+        <ul>
+          <li><a href="../aide/faq.html">FAQ</a></li>
+          <li><a href="../aide/contact.html">Contact</a></li>
+          <li><a href="../aide/confidentialite.html">Confidentialité</a></li>
+          <li><a href="../aide/conditions.html">Conditions d'utilisation</a></li>
+          <li><a href="../aide/mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Communauté</h3>
+        <a class="discord-btn" href="https://discord.gg/R3EUfGbyjA"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>Rejoindre le Discord</a>
+        <div class="socials">
+          <a href="https://discord.gg/R3EUfGbyjA" aria-label="Serveur Discord de Trackr"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg></a>
+          <a href="https://x.com/TrackrGG" aria-label="Trackr sur X (@TrackrGG)"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+          <a href="https://github.com/KIZAFOX/trackr" aria-label="Trackr sur GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="legal">Trackr n'est pas approuvé par Riot Games et ne reflète pas les opinions de Riot Games ni de personnes officiellement impliquées dans la production ou la gestion de League of Legends. League of Legends et Riot Games sont des marques ou des marques déposées de Riot Games, Inc.</p>
+    <div class="wordmark" aria-hidden="true">TRACKR</div>
+  </footer>
+</div>
+</body>
+</html>
