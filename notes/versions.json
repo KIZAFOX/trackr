@@ -2,10 +2,22 @@
   "note": "Les versions 0.1.0 à 0.1.9 sont sorties sans notes de version.",
   "entries": [
     {
+      "path": "notes/0.2.8.html",
+      "version": "0.2.8",
+      "title": "Trackr 0.2.8",
+      "date": "2026-10-25",
+      "counts": {
+        "new": 0,
+        "other": 6,
+        "fixed": 1
+      },
+      "highlights": []
+    },
+    {
       "path": "notes/0.2.7.html",
       "version": "0.2.7",
       "title": "Trackr 0.2.7",
-      "date": "2026-10-17",
+      "date": "2026-10-18",
       "counts": {
         "new": 40,
         "other": 6,
