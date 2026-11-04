@@ -2,6 +2,22 @@
   "note": "Les versions 0.1.0 à 0.1.9 sont sorties sans notes de version.",
   "entries": [
     {
+      "path": "notes/0.2.9.html",
+      "version": "0.2.9",
+      "title": "Trackr 0.2.9",
+      "date": "2026-11-05",
+      "counts": {
+        "new": 8,
+        "other": 3,
+        "fixed": 5
+      },
+      "highlights": [
+        "Esport : le tournoi en grand",
+        "Page Matchups refaite, comme un écran de versus",
+        "Nouveau tableau de bord"
+      ]
+    },
+    {
       "path": "notes/0.2.8.html",
       "version": "0.2.8",
       "title": "Trackr 0.2.8",
