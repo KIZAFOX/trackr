@@ -2,7 +2,7 @@
   "name": "trackr",
   "productName": "Trackr",
   "author": "KIZAFOX",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Trackr, compagnon gratuit pour League of Legends : champ select, tableau de bord, overlay en partie.",
   "license": "UNLICENSED",
   "private": true,
@@ -15,6 +15,8 @@
     "test": "node --test",
     "previews": "electron tools/make-theme-previews.js",
     "dist": "node tools/release-notes.js && node -r dotenv/config tools/write-build-env.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --publish never",
+    "dist:mac": "node tools/release-notes.js && node -r dotenv/config tools/write-build-env.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --mac --publish never",
+    "dist:linux": "node tools/release-notes.js && node -r dotenv/config tools/write-build-env.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --linux --publish never",
     "release": "node -r dotenv/config tools/check-release-env.js && node tools/release-notes.js && node -r dotenv/config tools/write-build-env.js && node -r dotenv/config ./node_modules/electron-builder/cli.js --publish always"
   },
   "dependencies": {
@@ -80,6 +82,54 @@
       "installerHeaderIcon": "build/icon.ico",
       "include": "build/installer.nsh",
       "artifactName": "Trackr-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.games",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Trackr utilise le micro seulement si tu l'ajoutes au son de tes clips.",
+        "NSAudioCaptureUsageDescription": "Trackr enregistre le son du Mac dans tes clips."
+      }
+    },
+    "dmg": {
+      "artifactName": "Trackr-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Game",
+      "maintainer": "KIZAFOX",
+      "synopsis": "Compagnon gratuit pour League of Legends",
+      "artifactName": "Trackr-${version}-${arch}.${ext}"
     },
     "publish": [
       {
